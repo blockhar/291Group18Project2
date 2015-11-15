@@ -1,7 +1,7 @@
 import re
 
 def readQuery(queryStr):
-    print (queryStr)
+    #print (queryStr)
     queryParts = splitQuery(queryStr)
     toProcess = []
 
