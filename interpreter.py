@@ -1,4 +1,6 @@
 import re
+import sys
+import fileinput
 
 def readQuery(queryStr):
     #print (queryStr)
@@ -9,7 +11,7 @@ def readQuery(queryStr):
         term = queryParts[0]
         if term == ""
 '''
-    print (queryParts)
+    return (queryParts)
 
 def splitQuery(queryStr):
     allTerms = queryStr.split(" ")
@@ -90,7 +92,76 @@ def splitQuery(queryStr):
     return finalList
 
 
+def process(queryList):
+	
+	if len(queryList) <= 0:
+		print ("Invalid query: no terms.")
+		sys.exit()
+
+	results = []
+
+	term = queryList.pop(0)
+	
+	if term == 'r:':
+		word = queryList.pop(0)
+		if re.match('\%', word):
+			print("reviewSearch(" + word + ", partial)")
+
+		else:
+			print("reviewSearch(" + word + ")")
+
+	elif re.match('^p:', term):
+        splitTerm = term.split(":", 1)
+        tempName.append("p:")
+        tempName.append(splitTerm[1])
+
+    elif re.match('^rscore<', term):
+        splitTerm = term.split("<", 1)
+        tempName.append("rscore")
+        tempName.append("<")
+        tempName.append(splitTerm[1])
+
+    elif re.match('^rscore>', term):
+        splitTerm = term.split(">", 1)
+        tempName.append("rscore")
+        tempName.append(">")
+        tempName.append(splitTerm[1])
+
+    elif re.match('^pprice<', term):
+        splitTerm = term.split("<", 1)
+        tempName.append("pprice")
+        tempName.append("<")
+        tempName.append(splitTerm[1])
+
+    elif re.match('^pprice>', term):
+        splitTerm = term.split(">", 1)
+        tempName.append("pprice")
+        tempName.append(">")
+        tempName.append(splitTerm[1])
+
+    elif re.match('^rdate<', term):
+        tempName.append("rdate")
+
+    elif re.match('^rdate>', term):
+        tempName.append("rdate")
+
+    elif re.match('^>.+', term):
+        tempName.append(">")
+
+    elif re.match('^<.+', term):
+        tempName.append("<")	
+	
+	return()
+
+
 
 if __name__ == '__main__':
-    q = input("Get Query: ")
-    readQuery(q)
+    for line in fileinput.input():
+    	queryList = readQuery(line.strip())
+	process(queryList)
+
+
+
+
+
+
