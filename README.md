@@ -1,7 +1,7 @@
 # 291Group18Project2
 
 1. Prepare Data files - Lexie
-2. Build Indexes
+2. Build Indexes - Fred
 3. Query Interpreter - Brad
 4. Function - return review id's given word in product title
 5. Function - return review id's given word in review summary or review text
