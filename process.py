@@ -56,10 +56,10 @@ def process(queryList):
 			print("rdateSearch(" + operator + " " + rdate + ")")
 
 		else:
-			if word[-1] == '%':
-				print("generalSearch(" + word + ", partial)")
+			if term[-1] == '%':
+				print("generalSearch(" + term + ", partial)")
 			else:
-				print("generalSearch(" + word + ")")
+				print("generalSearch(" + term + ")")
 
 
 
