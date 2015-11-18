@@ -1,0 +1,10 @@
+p:camera
+r:great
+camera
+cam%
+r:great cam%
+rscore > 4
+camera rscore < 3
+pprice<60 camera
+camera rdate>2007/06/20
+
