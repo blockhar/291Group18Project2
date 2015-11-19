@@ -1,0 +1,42 @@
+import fileinput
+
+def ReplaceChar(line): 
+	if "\"" in line: 
+		line = line.replace ('\"', '&quot;')
+		print(line)
+	if "\\" in line: 
+		line = line.replace('\\','\\\\')
+		print(line)
+
+def parsefile(line):
+	if 'product/productId' in line: 
+		line = line.replace('product/productId: ','')
+		print(line)
+	elif 'product/title' in line: 
+		line = line.replace('product/title: ','')
+		print(line)
+	elif 'review/userId' in line: 
+		line = line.replace('review/userId: ','')
+		print(line)
+	elif 'review/profileName' in line: 
+		line = line.replace('review/profileName: ','')
+		print(line)
+	elif 'helpfulness' in line: 
+		line = line.replace('review/helpfulness: ','')
+		print(line)
+	elif 'review/score' in line: 
+		line = line.replace('review/score: ','')
+		print(line)
+	elif 'review/time' in line: 
+		line = line.replace('review/time: ','')
+		print(line)
+	elif 'review/summary' in line: 
+		line = line.replace('review/summary: ','')
+		print(line)
+	elif 'review/text' in line: 
+		line = line.replace('review/text: ','')
+		print(line)
+
+if __name__=="__main__": 
+	for line in fileinput.input(): 
+		parsefile(line)
