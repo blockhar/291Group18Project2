@@ -31,11 +31,12 @@ import subprocess
 from bsddb3 import db
 
 def buildIndexes():
-  # sort. Do these commands save the sorted data?
-  subprocess.call([sort", "-u", "pterms.txt"])
-  subprocess.call([sort", "-u", "rterms.txt"])
-  subprocess.call([sort", "-u", "scores.txt"])
+  # Linux sort. Should this be run now or before this file is run?
+  subprocess.call([sort", "-o", "-u", "pterms.txt"])
+  subprocess.call([sort", "-o", "-u", "rterms.txt"])
+  subprocess.call([sort", "-o", "-u", "scores.txt"])
   
+  #initialize databases
   rw.idx = db.DB()
   pt.idx = db.DB()
   rt.idx = db.DB()
@@ -60,3 +61,4 @@ def buildIndexes():
 
 if __name__ == '__main__':
   #test
+  buildIndexes()
