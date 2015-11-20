@@ -27,9 +27,15 @@
 # https://www.jcea.es/programacion/pybsddb_doc/
 
 import sys
+import subprocess
 from bsddb3 import db
 
 def buildIndexes():
+  # sort. Do these commands save the sorted data?
+  subprocess.call([sort", "-u", "pterms.txt"])
+  subprocess.call([sort", "-u", "rterms.txt"])
+  subprocess.call([sort", "-u", "scores.txt"])
+  
   rw.idx = db.DB()
   pt.idx = db.DB()
   rt.idx = db.DB()
@@ -42,10 +48,10 @@ def buildIndexes():
   db_load -c duplicates=0 -T -t hash -f scores.txt sc.idx
   
   
-  # sort
+  #create indexes
   
   
-  # return/store indexes (probably return)
+  # store indexes
   
   rw.idx.close()
   pt.idx.close()
