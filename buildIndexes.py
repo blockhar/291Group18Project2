@@ -17,7 +17,8 @@
   line and data in the next line.
   Here is a simple Perl script that converts input records into the format db_load expects.
   Your program for Phase 2 would produces four indexes which should be named
-  rw.idx, pt.idx, rt.idx, and sc.idx respectively corresponding to indexes 1, 2, 3, and 4, as discussed above.
+    rw.idx, pt.idx, rt.idx, and sc.idx
+  respectively corresponding to indexes 1, 2, 3, and 4, as discussed above.
   
   In addition to db_load, you may also find db_dump with option p useful as you are building
   and testing the correctness of your indexes."""
@@ -29,9 +30,16 @@ import sys
 from bsddb3 import db
 
 def buildIndexes():
-  database = db.DB()
+  rw.idx = db.DB()
+  pt.idx = db.DB()
+  rt.idx = db.DB()
+  sc.idx = db.DB()
+  
   # import  text files
-  # pterms.txt rterms.txt scores.txt
+  db_load -c duplicates=0 -T -t hash -f reviews.txt rw.idx
+  db_load -c duplicates=0 -T -t hash -f pterms.txt pt.idx
+  db_load -c duplicates=0 -T -t hash -f rterms.txt rt.idx
+  db_load -c duplicates=0 -T -t hash -f scores.txt sc.idx
   
   
   # sort
@@ -39,7 +47,10 @@ def buildIndexes():
   
   # return/store indexes (probably return)
   
-  database.close()
+  rw.idx.close()
+  pt.idx.close()
+  rt.idx.close()
+  sc.idx.close()
 
 if __name__ == '__main__':
   #test
