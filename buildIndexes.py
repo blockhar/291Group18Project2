@@ -32,9 +32,16 @@ from bsddb3 import db
 
 def buildIndexes():
   # Linux sort. Should this be run now or before this file is run?
-  subprocess.call([sort", "-o", "-u", "pterms.txt"])
-  subprocess.call([sort", "-o", "-u", "rterms.txt"])
-  subprocess.call([sort", "-o", "-u", "scores.txt"])
+  #might depend on Perl script
+  #do this in terminal!!
+  #subprocess.call([sort", "-o", "-u", "pterms.txt"])
+  #subprocess.call([sort", "-o", "-u", "rterms.txt"])
+  #subprocess.call([sort", "-o", "-u", "scores.txt"])
+  
+  #break.pl
+  """
+  
+  """
   
   #initialize databases
   rw.idx = db.DB()
@@ -42,18 +49,19 @@ def buildIndexes():
   rt.idx = db.DB()
   sc.idx = db.DB()
   
-  # import  text files
-  db_load -c duplicates=0 -T -t hash -f reviews.txt rw.idx
-  db_load -c duplicates=0 -T -t hash -f pterms.txt pt.idx
-  db_load -c duplicates=0 -T -t hash -f rterms.txt rt.idx
-  db_load -c duplicates=0 -T -t hash -f scores.txt sc.idx
-  
-  
-  #create indexes
-  
+  # import  text files and create indexes
+  db_load -c -T -t hash -f reviews.txt rw.idx
+  db_load -c -T -t btree -f pterms.txt pt.idx
+  db_load -c -T -t btree -f rterms.txt rt.idx
+  db_load -c -T -t btree -f scores.txt sc.idx
   
   # store indexes
+  db_dump -f rw.idx
+  db_dump -f pt.idx
+  db_dump -f rt.idx
+  db_dump -f sc.idx
   
+  #close databases
   rw.idx.close()
   pt.idx.close()
   rt.idx.close()
