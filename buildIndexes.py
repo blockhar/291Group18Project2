@@ -50,7 +50,7 @@ def buildIndexes():
   sc.idx = db.DB()
   
   # import  text files and create indexes
-  db_load -c duplicates=1 -T -t hash -f reviews.txt rw.idx
+  db_load -c -T -t hash -f reviews.txt rw.idx
   db_load -c duplicates=1 -T -t btree -f pterms.txt pt.idx
   db_load -c duplicates=1 -T -t btree -f rterms.txt rt.idx
   db_load -c duplicates=1 -T -t btree -f scores.txt sc.idx
