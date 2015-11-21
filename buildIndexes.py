@@ -1,5 +1,3 @@
-# run break.pl before running this
-
 """Sort all the files built in Phase 1 (except the file reviews.txt which is sorted)
   using the Linux sort command;
   pass the right option to the sort command to keep only the unique rows (see the man page for sort).
