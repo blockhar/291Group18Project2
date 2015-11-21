@@ -43,16 +43,17 @@ def buildIndexes():
   rt.idx = db.DB()
   sc.idx = db.DB()
   
-  # import  text files
+  # import  text files and create indexes
   db_load -c duplicates=0 -T -t hash -f reviews.txt rw.idx
-  db_load -c duplicates=0 -T -t hash -f pterms.txt pt.idx
-  db_load -c duplicates=0 -T -t hash -f rterms.txt rt.idx
-  db_load -c duplicates=0 -T -t hash -f scores.txt sc.idx
-  
-  #create indexes
-  
+  db_load -c duplicates=0 -T -t btree -f pterms.txt pt.idx
+  db_load -c duplicates=0 -T -t btree -f rterms.txt rt.idx
+  db_load -c duplicates=0 -T -t btree -f scores.txt sc.idx
   
   # store indexes
+  db_dump -f rw.idx
+  db_dump -f pt.idx
+  db_dump -f rt.idx
+  db_dump -f sc.idx
   
   #close databases
   rw.idx.close()
