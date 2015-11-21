@@ -32,6 +32,7 @@ from bsddb3 import db
 
 def buildIndexes():
   # Linux sort. Should this be run now or before this file is run?
+  #might depend on Perl script
   subprocess.call([sort", "-o", "-u", "pterms.txt"])
   subprocess.call([sort", "-o", "-u", "rterms.txt"])
   subprocess.call([sort", "-o", "-u", "scores.txt"])
@@ -48,12 +49,12 @@ def buildIndexes():
   db_load -c duplicates=0 -T -t hash -f rterms.txt rt.idx
   db_load -c duplicates=0 -T -t hash -f scores.txt sc.idx
   
-  
   #create indexes
   
   
   # store indexes
   
+  #close databases
   rw.idx.close()
   pt.idx.close()
   rt.idx.close()
