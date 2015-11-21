@@ -33,9 +33,15 @@ from bsddb3 import db
 def buildIndexes():
   # Linux sort. Should this be run now or before this file is run?
   #might depend on Perl script
-  subprocess.call([sort", "-o", "-u", "pterms.txt"])
-  subprocess.call([sort", "-o", "-u", "rterms.txt"])
-  subprocess.call([sort", "-o", "-u", "scores.txt"])
+  #do this in terminal!!
+  #subprocess.call([sort", "-o", "-u", "pterms.txt"])
+  #subprocess.call([sort", "-o", "-u", "rterms.txt"])
+  #subprocess.call([sort", "-o", "-u", "scores.txt"])
+  
+  #break.pl
+  """
+  
+  """
   
   #initialize databases
   rw.idx = db.DB()
