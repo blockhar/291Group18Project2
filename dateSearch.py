@@ -6,7 +6,7 @@ def dateSearch(theDate, isGreater)
 	index = db.DB()
 	index.open("pt.idx")
 	
-	curs = index.cursor()
+    curs = index.cursor()
 	
 	results = []
 	dateIndex #initialize this!
@@ -18,4 +18,5 @@ def dateSearch(theDate, isGreater)
     
     
     return results
+    
     
