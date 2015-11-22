@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo reviews.txt
+echo reviews.txt | uniq -u
 break.pl
 db_load -c -T -t hash -f reviews.txt rw.idx
 
