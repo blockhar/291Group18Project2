@@ -10,6 +10,6 @@
 9. Function - return review id's with review date greater/less than given date - Fred
 10. Function - print reviews given list of review id's - Lexie
 
-8. ** This actually gets done during/right before printing, my mistake - Function - return review id's with price greater/less than given price
+11. ** This actually gets done during/right before printing, my mistake - Function - return review id's with price greater/less than given price - Lexie
 
 
