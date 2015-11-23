@@ -1,6 +1,6 @@
 import sys
 import re
-import datetime
+import time
 
 # information is all of the product information
 def checkDate(information, lowDate, highDate):
@@ -9,9 +9,9 @@ def checkDate(information, lowDate, highDate):
     
     #convert lowDate and/or highDate to correct format
     if not lowDate == -1:
-    	lowDate = datetime.strptime(lowDate, '%Y/%m/%d')
+    	lowDate = time.strptime(lowDate, '%Y/%m/%d')
     if not highDate == -1:
-    	highDate = datetime.strptime(highDate, '%Y/%m/%d')
+    	highDate = time.strptime(highDate, '%Y/%m/%d')
     
     dateIndex = 7 # this is the minimum possible value
     
