@@ -11,6 +11,7 @@ def search(word, partial, indexName):
 	curs = index.cursor()
 	
 	results = []
+	word = word.lower()
 
 	if partial:
 		#print("Doing partial.")
