@@ -1,29 +1,38 @@
 import sys
+import wordSearch
+import searchScore
+#import dateSearch
 
 def process(queryList):
 	if len(queryList) <= 0:
 		print("Invalid query: no terms.")
 		sys.exit()
 
-	results = ['Initialized']
+	finalResults = ['Initialized']
+	minDate = -1
+	maxDate = -1
+	minPrice = -1
+	maxPrice = -1
 
 	while len(queryList) > 0:
 
 		term = queryList.pop(0)	
+
+		results = []
 		
 		if term == 'r:':
 			word = queryList.pop(0)
 			if word[-1] == '%':
-				print("reviewSearch(" + word + ", partial)")
+				results = wordSearch.search(word,True,"rt.idx")
 			else:
-				print("reviewSearch(" + word + ")")
+				results = wordSearch.search(word,False,"rt.idx")
 	
 		elif term == 'p:':
 			word = queryList.pop(0)
 			if word[-1] == '%':
-				print("productSearch(" + word + ", partial)")
+				results = wordSearch.search(word,True,"pt.idx")
 			else:
-				print("productSearch(" + word + ")")
+				results = wordSearch.search(word,False,"pt.idx")
 
 		elif term == "rscore":
 			operator = queryList.pop(0)
@@ -33,35 +42,53 @@ def process(queryList):
 				print("Invalid operator: " + operator + " with term " + term)
 				sys.exit()
 			score = queryList.pop(0)
-			print("rrscoreSearch(" + operator + " " + score + ")")
+			try:
+				score = eval(score)
+			except:
+				print("Invalid score: " + score)
+				sys.exit()
+			results = searchScore.searchScores(score, operator)
 
 		elif term == "pprice":
 			operator = queryList.pop(0)
-			if operator == '<' or operator == '>':
-				pass
+			if operator == '<':
+				price = queryList.pop(0)
+				maxPrice = price
+			elif operator == '>':
+				price = queryList.pop(0)
+				minPrice = price
 			else:
 				print("Invalid operator: " + operator + " with term " + term)
 				sys.exit()
-			price = queryList.pop(0)
-			print("ppriceSearch(" + operator + " " + price + ")")
 
 		elif term == "rdate":
 			operator = queryList.pop(0)
-			if operator == '<' or operator == '>':
-				pass
+			if operator == '<':
+				rdate = queryList.pop(0)
+				maxDate = rdate
+			elif operator == '>':
+				rdate = queryList.pop(0)
+				minDate = rdate
 			else:
 				print("Invalid operator: " + operator + " with term " + term)
 				sys.exit()
-			rdate = queryList.pop(0)
-			print("rdateSearch(" + operator + " " + rdate + ")")
 
 		else:
 			if term[-1] == '%':
-				print("generalSearch(" + term + ", partial)")
+				results1 = wordSearch.search(term,True,"rt.idx")
+				results2 = wordSearch.search(term,True,"pt.idx")
+				results = set(results1) & set(results2)
 			else:
-				print("generalSearch(" + term + ")")
+				results1 = wordSearch.search(term,False,"rt.idx")
+				results2 = wordSearch.search(term,False,"pt.idx")
+				results = set(results1) & set(results2)
 
+		if finalResults == ['Initialized']:
+			finalResults = results
+		else:
+			finalResults = set(finalResults)&set(results)
 
+	print(list(finalResults))
 
 
 if __name__ == '__main__':
