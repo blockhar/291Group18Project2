@@ -90,6 +90,8 @@ def splitQuery(queryStr):
 
 if __name__ == '__main__':
 	for line in fileinput.input():
+		if line == "":
+			sys.exit()
 		queryList = readQuery(line.strip())
 		process.process(queryList)
 		print()
