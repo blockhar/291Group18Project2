@@ -15,6 +15,8 @@ def process(queryList):
 	minPrice = -1
 	maxPrice = -1
 
+	#print(queryList)
+
 	while len(queryList) > 0:
 
 		term = queryList.pop(0)	
@@ -55,9 +57,11 @@ def process(queryList):
 			if operator == '<':
 				price = queryList.pop(0)
 				maxPrice = price
+				continue
 			elif operator == '>':
 				price = queryList.pop(0)
 				minPrice = price
+				continue
 			else:
 				print("Invalid operator: " + operator + " with term " + term)
 				sys.exit()
@@ -67,9 +71,11 @@ def process(queryList):
 			if operator == '<':
 				rdate = queryList.pop(0)
 				maxDate = rdate
+				continue
 			elif operator == '>':
 				rdate = queryList.pop(0)
 				minDate = rdate
+				continue
 			else:
 				print("Invalid operator: " + operator + " with term " + term)
 				sys.exit()
