@@ -2,6 +2,7 @@ import sys
 import wordSearch
 import searchScore
 #import dateSearch
+import printReviews
 
 def process(queryList):
 	if len(queryList) <= 0:
@@ -88,7 +89,10 @@ def process(queryList):
 		else:
 			finalResults = set(finalResults)&set(results)
 
-	print(list(finalResults))
+	#print(list(finalResults))
+	finalResults = list(finalResults)
+	finalResults.sort()
+	printReviews.printReviews(finalResults, maxPrice, minPrice, minDate, maxDate)
 
 
 if __name__ == '__main__':
