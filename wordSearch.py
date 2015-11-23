@@ -4,9 +4,9 @@ import sys
 def incrementLastLetter(word,amount):
 	return (chr(ord(word[-1])+amount))
 
-def search(word, partial, index):
+def search(word, partial, indexName):
 	index = db.DB()
-	index.open(index)
+	index.open(indexName)
 
 	curs = index.cursor()
 	
@@ -26,7 +26,7 @@ def search(word, partial, index):
 		#print("Doing Full.")
 		iter = curs.set(word.encode('utf-8'))
 		while iter:
-			results.append(iter[1])
+			results.append(iter[1].decode('utf-8'))
 			iter = curs.next_dup()
 
 	return results
