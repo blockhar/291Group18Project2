@@ -77,11 +77,11 @@ def process(queryList):
 			if term[-1] == '%':
 				results1 = wordSearch.search(term,True,"rt.idx")
 				results2 = wordSearch.search(term,True,"pt.idx")
-				results = set(results1) + set(results2)
+				results = set(results1) | set(results2)
 			else:
 				results1 = wordSearch.search(term,False,"rt.idx")
 				results2 = wordSearch.search(term,False,"pt.idx")
-				results = set(results1) + set(results2)
+				results = set(results1) | set(results2)
 
 		if finalResults == ['Initialized']:
 			finalResults = results
