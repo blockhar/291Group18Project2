@@ -4,7 +4,7 @@ from bsddb3 import db
 # theData is type date and isGreater is boolean
 def dateSearch(theDate, isGreater):
     index = db.DB()
-    index.open("pt.idx")
+    index.open("rw.idx")
     
     curs = index.cursor()
     
