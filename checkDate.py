@@ -23,8 +23,8 @@ def checkDate(information, lowDate, highDate):
     return false
 
 if __name__ == '__main__':
-	print checkDate('B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!','1994/01/01','1995/01/01')
-	print checkDate('B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!','1994/01/01','2015/10/10')
-	print checkDate('B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!',-1,'2015/10/10')
-	print checkDate('B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!','1994/01/01',-1)
-	print checkDate('B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!',-1,-1)
+	print checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",'1994/01/01','1995/01/01')
+	print checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",'1994/01/01','2015/10/10')
+	print checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",-1,'2015/10/10')
+	print checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",'1994/01/01',-1)
+	print checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",-1,-1)
