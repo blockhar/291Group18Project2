@@ -25,7 +25,7 @@ def checkDate(information, lowDate, highDate):
     	if not lowDate < int(infoArray[dateIndex]):
     		result = False
     if(highDate != -1):
-    	if not highDate < int(infoArray[dateIndex]):
+    	if not highDate > int(infoArray[dateIndex]):
     		result = False
     return result
 
