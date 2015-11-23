@@ -1,5 +1,4 @@
 import sys
-import re
 from bsddb3 import db
 
 # theData is type date and isGreater is boolean
@@ -22,3 +21,7 @@ def dateSearch(theDate, isGreater):
     index.close()
     return results
     
+
+if __name__ == '__main__':
+	dateSearch(1182816000, 1)
+	dateSearch(1182816000, 0)
