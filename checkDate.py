@@ -1,5 +1,6 @@
 import sys
 import re
+import datetime
 
 # information is all of the product information
 def checkDate(information, lowDate, highDate):
