@@ -5,7 +5,7 @@ import time
 # information is all of the product information
 def checkDate(information, lowDate, highDate):
     if lowDate == -1 and highDate == -1:
-      return true
+      return True
     
     #convert lowDate and/or highDate to correct format
     if not lowDate == -1:
@@ -20,8 +20,8 @@ def checkDate(information, lowDate, highDate):
       dateIndex += 1
     
     if not(lowDate != -1 or lowDate < infoArray[dateIndex]) and not(highDate != -1 or highDate > infoArray[dateIndex]):
-      return true
-    return false
+      return True
+    return False
 
 if __name__ == '__main__':
 	print( checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",'1994/01/01','1995/01/01'))
