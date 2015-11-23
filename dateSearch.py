@@ -1,5 +1,4 @@
 import sys
-import re
 from bsddb3 import db
 
 # theData is type date and isGreater is boolean
