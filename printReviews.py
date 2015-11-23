@@ -8,6 +8,17 @@ def printReviews(results,pricemax = -1, pricemin = -1, minDate = -1, maxDate = -
 	index = db.DB()
 	index.open("rw.idx")
 
+	try:
+		pricemin = pricemin.replace("'","")
+		pricemin = float(eval(pricemin))
+	except:
+		pass
+	try:
+		pricemax = pricemax.replace("'","")
+		pricemax = float(eval(pricemax))
+	except:
+		pass
+
 	curs = index.cursor()
 	#iter = curs.first()
 
@@ -38,6 +49,7 @@ def printReviews(results,pricemax = -1, pricemin = -1, minDate = -1, maxDate = -
 					else:
 		
 						inRange = checkPriceRange(pricemax, pricemin, i)
+						#print(i)
 						#print(inRange)
 						dateOK = checkDate.checkDate(iter[1].decode('utf-8'), minDate, maxDate)
 						if inRange == True and dateOK: 
