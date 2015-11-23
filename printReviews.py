@@ -26,17 +26,18 @@ def printReviews(results,pricemax = -1, pricemin = -1):
 						i = -1
 
 					if pricemin == -1 and pricemax == -1: 
-					
-						print (iter[1].decode("utf-8"))
-						print("")
+						print("Entry Number: " + iter[0].decode("utf-8"))
+						printPretty(iter)
+						#print (iter[1].decode("utf-8"))
+						#print("")
 
 					else:
 		
 						inRange = checkPriceRange(pricemax, pricemin, i)
 						#print(inRange)
 						if inRange == True: 
-							print (iter[1].decode("utf-8"))
-							print("")
+							print("Entry Number: " + iter[0].decode("utf-8"))
+							printPretty(iter)
 
 
 					flag = 0
@@ -65,6 +66,51 @@ def checkPriceRange(priceMax, priceMin, current):
 
 	return False
 
+def printPretty(iter): 
+	current = 0
+	everything = iter[1].decode("utf-8").split(",")
+
+	print("Product ID: "+ everything[current])
+	current+=1 
+
+	quoteCount = everything[current].count("\"")
+
+	if quoteCount == 1: 
+		print("Title: " + everything[current]+ ","+ everything[current+1])
+		current+=2
+	else: 
+		print("Title: " + everything[current])
+		current +=1
+
+	print("Price: " + everything[current])
+	current += 1
+
+	print ("User ID: " + everything[current])
+	current += 1 
+
+	print("Profile Name: " + everything[current])
+	current +=1
+
+	print("Helpfulness: " + everything[current])
+	current += 1
+
+	print("Score: " + everything[current])
+	current += 1
+
+	print("Time: " + everything[current])
+	current += 1
+
+	print("Summary: " + everything[current])
+
+	print("Review: ", end="")
+	for index, word in enumerate(everything):
+		#print(everything[index])
+		if(index>current):
+			print(everything[index], end = ",")
+
+	print("\n")
+
+
 if __name__ == '__main__':
 	results = [1,2,3,4,5,6,7,8,9,10]
-	printReviews(results)
+	printReviews(results,20,10)
