@@ -23,5 +23,6 @@ def dateSearch(theDate, isGreater):
     
 
 if __name__ == '__main__':
+	#Might need to convert string to date here
 	dateSearch(1182816000, 1)
 	dateSearch(1182816000, 0)
