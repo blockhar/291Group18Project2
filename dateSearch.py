@@ -22,3 +22,7 @@ def dateSearch(theDate, isGreater):
     index.close()
     return results
     
+
+if __name__ == '__main__':
+	dateSearch(1182816000, 1)
+	dateSearch(1182816000, 0)
