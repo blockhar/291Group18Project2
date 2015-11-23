@@ -9,12 +9,10 @@ def printReviews(results,pricemax = -1, pricemin = -1, minDate = -1, maxDate = -
 	index.open("rw.idx")
 
 	try:
-		pricemin = pricemin.replace("'","")
 		pricemin = float(eval(pricemin))
 	except:
 		pass
 	try:
-		pricemax = pricemax.replace("'","")
 		pricemax = float(eval(pricemax))
 	except:
 		pass
