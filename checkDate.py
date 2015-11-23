@@ -20,9 +20,14 @@ def checkDate(information, lowDate, highDate):
     while not re.match('[0-9]{10}', infoArray[dateIndex]):
       dateIndex += 1
     
-    if not(lowDate != -1 or lowDate < int(infoArray[dateIndex])) and not(highDate != -1 or highDate > int(infoArray[dateIndex])):
-      return True
-    return False
+    result = True
+    if(lowDate != -1):
+    	if not lowDate < int(infoArray[dateIndex]):
+    		result = False
+    if(highDate != -1):
+    	if not highDate < int(infoArray[dateIndex]):
+    		result = False
+    return result
 
 if __name__ == '__main__':
 	print( checkDate("B000GKXY34,Nun Chuck,Novelty Nun Toss Toy,17.99,ADX8VLDUOL7BG,M. Gingras,0/0,5.0,1262304000,Great fun!,Got these last Christmas as a gag gift. They are great fun, but obviously this is not a toy that lasts!",'1994/01/01','1995/01/01'))
