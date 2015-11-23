@@ -11,10 +11,8 @@ def checkDate(information, lowDate, highDate):
     #convert lowDate and/or highDate to correct format
     if not lowDate == -1:
     	lowDate = int(time.mktime(datetime.datetime.strptime(lowDate, '%Y/%m/%d').timetuple()))  #time.strptime(lowDate, '%Y/%m/%d')
-    	print(lowDate)#TEST CODE
     if not highDate == -1:
     	highDate = int(time.mktime(datetime.datetime.strptime(highDate, '%Y/%m/%d').timetuple()))  #time.strptime(highDate, '%Y/%m/%d')
-    	print(highDate)#TEST CODE
     
     dateIndex = 7 # this is the minimum possible value
     
@@ -22,7 +20,7 @@ def checkDate(information, lowDate, highDate):
     while not re.match('[0-9]{10}', infoArray[dateIndex]):
       dateIndex += 1
     
-    if not(lowDate != -1 ^ lowDate < int(infoArray[dateIndex])) and not(highDate != -1 ^ highDate > int(infoArray[dateIndex])):
+    if not(lowDate != -1 or lowDate < int(infoArray[dateIndex])) and not(highDate != -1 or highDate > int(infoArray[dateIndex])):
       return True
     return False
 
