@@ -22,7 +22,7 @@ def checkDate(information, lowDate, highDate):
     while not re.match('[0-9]{10}', infoArray[dateIndex]):
       dateIndex += 1
     
-    if not(lowDate != -1 or lowDate < int(infoArray[dateIndex])) and not(highDate != -1 or highDate > int(infoArray[dateIndex])):
+    if not(lowDate != -1 ^ lowDate < int(infoArray[dateIndex])) and not(highDate != -1 ^ highDate > int(infoArray[dateIndex])):
       return True
     return False
 
