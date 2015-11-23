@@ -16,7 +16,7 @@ def checkDate(information, lowDate, highDate):
     dateIndex = 7 # this is the minimum possible value
     
     infoArray = information.split(",")
-    while not re.match(r"\D(\d{10})\D", infoArray[dateIndex]):
+    while not re.match('[0-9]{10}', infoArray[dateIndex]):
       dateIndex += 1
     
     if not(lowDate != -1 or lowDate < infoArray[dateIndex]) and not(highDate != -1 or highDate > infoArray[dateIndex]):
