@@ -10,10 +10,10 @@ def checkDate(information, lowDate, highDate):
     
     #convert lowDate and/or highDate to correct format
     if not lowDate == -1:
-    	lowDate = time.mktime(datetime.datetime.strptime(lowDate, '%Y/%m/%d').timetuple())  #time.strptime(lowDate, '%Y/%m/%d')
+    	lowDate = int(time.mktime(datetime.datetime.strptime(lowDate, '%Y/%m/%d').timetuple()))  #time.strptime(lowDate, '%Y/%m/%d')
     	print(lowDate)#TEST CODE
     if not highDate == -1:
-    	highDate = time.mktime(datetime.datetime.strptime(highDate, '%Y/%m/%d').timetuple())  #time.strptime(highDate, '%Y/%m/%d')
+    	highDate = int(time.mktime(datetime.datetime.strptime(highDate, '%Y/%m/%d').timetuple()))  #time.strptime(highDate, '%Y/%m/%d')
     	print(highDate)#TEST CODE
     
     dateIndex = 7 # this is the minimum possible value
