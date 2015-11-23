@@ -1,20 +1,23 @@
 from bsddb3 import db
 import sys
 import math
+import checkDate
 
 # if you don't want to check pricemax or pricemin pass -1
-def printReviews(results,pricemax = -1, pricemin = -1):
+def printReviews(results,pricemax = -1, pricemin = -1, minDate = -1, maxDate = -1):
 	index = db.DB()
 	index.open("rw.idx")
 
 	curs = index.cursor()
-	iter = curs.first()
+	#iter = curs.first()
 
-	while iter: 
+	for elem in results:
+		iter = curs.set(elem.encode('utf-8')) 
 		priceFlag = False
 		currentID =iter[0].decode("utf-8")
 		curPrice = 0
-		if int(currentID) in results:
+		#if int(currentID) in results:
+		if True:
 
 			everything = iter[1].decode("utf-8").split(",")
 			flag = 0
@@ -25,17 +28,19 @@ def printReviews(results,pricemax = -1, pricemin = -1):
 					if i == 'unknown':
 						i = -1
 
-					if pricemin == -1 and pricemax == -1: 
-						print("Entry Number: " + iter[0].decode("utf-8"))
-						printPretty(iter)
-						#print (iter[1].decode("utf-8"))
-						#print("")
+					if pricemin == -1 and pricemax == -1:
+						if checkDate.checkDate(iter[1].decode('utf-8'), minDate, maxDate):
+							print("Entry Number: " + iter[0].decode("utf-8"))
+							printPretty(iter)
+							#print (iter[1].decode("utf-8"))
+							#print("")
 
 					else:
 		
 						inRange = checkPriceRange(pricemax, pricemin, i)
 						#print(inRange)
-						if inRange == True: 
+						dateOK = checkDate.checkDate(iter[1].decode('utf-8'), minDate, maxDate)
+						if inRange == True and dateOK: 
 							print("Entry Number: " + iter[0].decode("utf-8"))
 							printPretty(iter)
 
@@ -112,5 +117,5 @@ def printPretty(iter):
 
 
 if __name__ == '__main__':
-	results = [1,2,3,4,5,6,7,8,9,10]
+	results = ['1','2','3','4','5','6','7','8','9','10']
 	printReviews(results,20,10)
