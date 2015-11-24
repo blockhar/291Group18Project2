@@ -91,8 +91,21 @@ def printPretty(iter):
 	quoteCount = everything[current].count("\"")
 
 	if quoteCount == 1: 
-		print("Title: " + everything[current]+ ","+ everything[current+1])
-		current+=2
+		titleString = ("Title: " + everything[current])
+		current += 1
+		quoteFlag = False 
+
+		while (quoteFlag == False): 
+			print(everything[current])
+			quoteCount = everything[current].count("\"")
+			if quoteCount == 0: 
+				titleString+=("," + everything[current])
+				current+=1
+			else: 
+				titleString+=("," + everything[current])
+				current+=1
+				quoteFlag = True
+		print(titleString)
 	else: 
 		print("Title: " + everything[current])
 		current +=1
@@ -128,4 +141,4 @@ def printPretty(iter):
 
 if __name__ == '__main__':
 	results = ['1','2','3','4','5','6','7','8','9','10']
-	printReviews(results,20,10)
+	printReviews(results)
