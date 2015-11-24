@@ -96,7 +96,7 @@ def printPretty(iter):
 		quoteFlag = False 
 
 		while (quoteFlag == False): 
-			print(everything[current])
+		
 			quoteCount = everything[current].count("\"")
 			if quoteCount == 0: 
 				titleString+=("," + everything[current])
