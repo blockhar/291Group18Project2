@@ -91,7 +91,7 @@ def process(queryList):
 				results = set(results1) | set(results2)
 
 		if finalResults == ['Initialized']:
-			finalResults = results
+			finalResults = set(results)
 		else:
 			finalResults = set(finalResults)&set(results)
 
